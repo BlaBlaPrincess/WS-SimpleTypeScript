@@ -11,6 +11,11 @@ export default class NumberArrayCounting {
         return this.getSum(array) / array.length;
     }
 
+    static getMax(array: number[]) : number {
+        this.validateArrayLength(array);
+        return Math.max(...array);
+    }
+
     static getSum(array: number[]) : number {
         return array.reduce((a, b) => a + b, 0);
     }

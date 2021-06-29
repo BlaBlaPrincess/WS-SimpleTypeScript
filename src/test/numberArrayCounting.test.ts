@@ -37,6 +37,43 @@ describe("getAverage()", () => {
 
 });
 
+describe("getMax()", () => {
+
+    test("with positive set", () => {
+        // Arrange
+        let set = [1, 2, 3, 4, 10];
+
+        // Act
+        let result = NumberArrayCounting.getMax(set);
+
+        // Assert
+        expect(result).toBe(10);
+    });
+
+    test("with mixed set", () => {
+        // Arrange
+        let set = [20, -10];
+
+        // Act
+        let result = NumberArrayCounting.getMax(set);
+
+        // Assert
+        expect(result).toBe(20);
+    });
+
+    test("with empty set", () => {
+        // Arrange
+        let set: number[] = [];
+
+        // Act
+        let act = () => NumberArrayCounting.getMax(set);
+
+        // Assert
+        expect(() => act()).toThrow(RangeError);
+    });
+
+});
+
 describe("getSum()", () => {
 
     test("with positive set", () => {
