@@ -1,5 +1,42 @@
 import NumberArrayCounting from "../main/numberArrayCounting";
 
+describe("getAverage()", () => {
+
+    test("with positive set", () => {
+        // Arrange
+        let set = [1, 2, 3, 4, 10];
+
+        // Act
+        let result = NumberArrayCounting.getAverage(set);
+
+        // Assert
+        expect(result).toBe(4);
+    });
+
+    test("with mixed set", () => {
+        // Arrange
+        let set = [20, -10];
+
+        // Act
+        let result = NumberArrayCounting.getAverage(set);
+
+        // Assert
+        expect(result).toBe(5);
+    });
+
+    test("with empty set", () => {
+        // Arrange
+        let set: number[] = [];
+
+        // Act
+        let act = () => NumberArrayCounting.getAverage(set);
+
+        // Assert
+        expect(() => act()).toThrow(RangeError);
+    });
+
+});
+
 describe("getSum()", () => {
 
     test("with positive set", () => {
