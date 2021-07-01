@@ -1,149 +1,49 @@
 import NumberArrayCounting from "../main/numberArrayCounting";
 
-describe("getAverage()", () => {
+function toBe (method: (set: number[]) => number, set:number[], expected: any) {
+    // Act
+    let result = method(set);
 
-    test("with positive set", () => {
-        // Arrange
-        let set = [1, 2, 3, 4, 10];
+    // Assert
+    expect(result).toBe(expected);
+}
 
-        // Act
-        let result = NumberArrayCounting.getAverage(set);
+function toThrow (method: (set: number[]) => number, set:number[], expected: any) {
+    // Act
+    let act = () => method(set);
 
-        // Assert
-        expect(result).toBe(4);
-    });
+    // Assert
+    expect(() => act()).toThrow(expected);
+}
 
-    test("with mixed set", () => {
-        // Arrange
-        let set = [20, -10];
-
-        // Act
-        let result = NumberArrayCounting.getAverage(set);
-
-        // Assert
-        expect(result).toBe(5);
-    });
-
-    test("with empty set", () => {
-        // Arrange
-        let set: number[] = [];
-
-        // Act
-        let act = () => NumberArrayCounting.getAverage(set);
-
-        // Assert
-        expect(() => act()).toThrow(RangeError);
-    });
-
+describe.each([
+    {description: "with mixed set",    set: [20, -10],        testScenario: toBe,    expected: 5},
+    {description: "with positive set", set: [1, 2, 3, 4, 10], testScenario: toBe,    expected: 4},
+    {description: "with empty set",    set: [],               testScenario: toThrow, expected: RangeError}
+])("getAverage()", ({description, set, testScenario, expected}) => {
+    test(description, () => testScenario((s) => NumberArrayCounting.getAverage(s), set, expected));
 });
 
-describe("getMax()", () => {
-
-    test("with positive set", () => {
-        // Arrange
-        let set = [1, 2, 3, 4, 10];
-
-        // Act
-        let result = NumberArrayCounting.getMax(set);
-
-        // Assert
-        expect(result).toBe(10);
-    });
-
-    test("with mixed set", () => {
-        // Arrange
-        let set = [20, -10];
-
-        // Act
-        let result = NumberArrayCounting.getMax(set);
-
-        // Assert
-        expect(result).toBe(20);
-    });
-
-    test("with empty set", () => {
-        // Arrange
-        let set: number[] = [];
-
-        // Act
-        let act = () => NumberArrayCounting.getMax(set);
-
-        // Assert
-        expect(() => act()).toThrow(RangeError);
-    });
-
+describe.each([
+    {description: "with mixed set",    set: [20, -10],        testScenario: toBe,    expected: 20},
+    {description: "with positive set", set: [1, 2, 3, 4, 10], testScenario: toBe,    expected: 10},
+    {description: "with empty set",    set: [],               testScenario: toThrow, expected: RangeError}
+])("getMax()", ({description, set, testScenario, expected}) => {
+    test(description, () => testScenario((s) => NumberArrayCounting.getMax(s), set, expected));
 });
 
-describe("getMin()", () => {
-
-    test("with positive set", () => {
-        // Arrange
-        let set = [1, 2, 3, 4, 10];
-
-        // Act
-        let result = NumberArrayCounting.getMin(set);
-
-        // Assert
-        expect(result).toBe(1);
-    });
-
-    test("with mixed set", () => {
-        // Arrange
-        let set = [20, -10];
-
-        // Act
-        let result = NumberArrayCounting.getMin(set);
-
-        // Assert
-        expect(result).toBe(-10);
-    });
-
-    test("with empty set", () => {
-        // Arrange
-        let set: number[] = [];
-
-        // Act
-        let act = () => NumberArrayCounting.getMin(set);
-
-        // Assert
-        expect(() => act()).toThrow(RangeError);
-    });
-
+describe.each([
+    {description: "with mixed set",    set: [20, -10],        testScenario: toBe,    expected: -10},
+    {description: "with positive set", set: [1, 2, 3, 4, 10], testScenario: toBe,    expected: 1},
+    {description: "with empty set",    set: [],               testScenario: toThrow, expected: RangeError}
+])("getMin()", ({description, set, testScenario, expected}) => {
+    test(description, () => testScenario((s) => NumberArrayCounting.getMin(s), set, expected));
 });
 
-describe("getSum()", () => {
-
-    test("with positive set", () => {
-        // Arrange
-        let set = [1, 2, 3, 4, 10];
-
-        // Act
-        let result = NumberArrayCounting.getSum(set);
-
-        // Assert
-        expect(result).toBe(20);
-    });
-
-    test("with mixed set", () => {
-        // Arrange
-        let set = [20, -10];
-
-        // Act
-        let result = NumberArrayCounting.getSum(set);
-
-        // Assert
-        expect(result).toBe(10);
-    });
-
-    test("with empty set", () => {
-        // Arrange
-        let set: number[] = [];
-
-        // Act
-        let result = NumberArrayCounting.getSum(set);
-
-        // Assert
-        expect(result).toBe(0);
-    });
-
+describe.each([
+    {description: "with mixed set",    set: [20, -10],        testScenario: toBe, expected: 10},
+    {description: "with positive set", set: [1, 2, 3, 4, 10], testScenario: toBe, expected: 20},
+    {description: "with empty set",    set: [],               testScenario: toBe, expected: 0}
+])("getSum()", ({description, set, testScenario, expected}) => {
+    test(description, () => testScenario((s) => NumberArrayCounting.getSum(s), set, expected));
 });
