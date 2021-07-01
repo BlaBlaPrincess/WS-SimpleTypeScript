@@ -5,7 +5,7 @@ class App {
     static main(args:string[]) : void {
         if (args.length != 0) {
             for (const arg in args) {
-                let num = +arg;
+                let num = parseInt(arg);
                 console.log(`Num: ${num}`);
                 this.present(num);
             }
@@ -19,7 +19,7 @@ class App {
                         process.exit();
                     }
                     try {
-                        let num = +data;
+                        let num = parseInt(data);
                         if (data !== num.toString()){
                             console.log(`Num: ${num}`);
                         }
