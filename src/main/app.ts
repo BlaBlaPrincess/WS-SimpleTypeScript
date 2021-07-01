@@ -13,7 +13,8 @@ class App {
                 if (data.toString().trim() !== '') {
                     try {
                         this.present(data);
-                    } catch {
+                    } catch (e) {
+                        console.log(`Err: ${e.message}`);
                         process.exit();
                     }
                 }
@@ -22,9 +23,6 @@ class App {
     }
 
     private static present(input: number): void {
-        if (isNaN(input)) {
-            throw new Error("invalid number format");
-        }
         let digits = DigitsRepresentation.getDigitsArray(input);
         console.log(`Avg: ${NumberArrayCounting.getAverage(digits)}`);
         console.log(`Max: ${NumberArrayCounting.getMax(digits)}`);
