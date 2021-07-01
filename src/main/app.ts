@@ -8,14 +8,18 @@ class App {
                 this.present(+arg);
             }
         } else {
+            console.log("Type exit to finish\n");
             let stdin = process.openStdin();
             stdin.addListener("data", (data) => {
-                if (data.toString().trim() !== '') {
+                data = data.toString().toLowerCase().trim();
+                if (data !== '') {
+                    if (data === "exit") {
+                        process.exit();
+                    }
                     try {
-                        this.present(data);
+                        this.present(+data);
                     } catch (e) {
                         console.log(`Err: ${e.message}`);
-                        process.exit();
                     }
                 }
             });
