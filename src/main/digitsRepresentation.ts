@@ -1,6 +1,6 @@
 export default class DigitsRepresentation {
 
-    static getDigitsArray(number: number) : number[] {
+    static getDigitsArray(number: number): number[] {
         let abs = Math.abs(number);
 
         let array = [];

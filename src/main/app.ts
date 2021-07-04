@@ -2,7 +2,7 @@ import DigitsRepresentation from "./digitsRepresentation";
 import NumberArrayCounting from "./numberArrayCounting";
 
 class App {
-    static main(args:string[]) : void {
+    static main(args: string[]): void {
         if (args.length != 0) {
             for (const arg in args) {
                 let num = parseInt(arg);
@@ -20,7 +20,7 @@ class App {
                     }
                     try {
                         let num = parseInt(data);
-                        if (data !== num.toString()){
+                        if (data !== num.toString()) {
                             console.log(`Num: ${num}`);
                         }
                         this.present(num);
